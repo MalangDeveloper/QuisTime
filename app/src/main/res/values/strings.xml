@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">QuisTime</string>
+    <string name="signcontinue">Continue</string>
+    <string name="enter_your_password">enter_your_password</string>
+    <string name="forgot_password">enter_your_password</string>
+    <string name="enter_pasword">Enter Your Password</string>
 </resources>
