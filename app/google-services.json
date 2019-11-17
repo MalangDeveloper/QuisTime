@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "356125255309",
+    "firebase_url": "https://quistime-a2dfd.firebaseio.com",
+    "project_id": "quistime-a2dfd",
+    "storage_bucket": "quistime-a2dfd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:356125255309:android:5c566ba781e3e5d56164c4",
+        "android_client_info": {
+          "package_name": "com.example.quistime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "356125255309-2o34j7oous7jru2cjf46pqafsbrgch4k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.quistime",
+            "certificate_hash": "ba06010b11cab2e0ac05f57dd2baeb69427b6739"
+          }
+        },
+        {
+          "client_id": "356125255309-7sclcd30vbbd05ktk23qv8jkboicllhu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjS-e_1M-IKxw8ZQ9JlLCo8B_fq0Sk7oA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "356125255309-7sclcd30vbbd05ktk23qv8jkboicllhu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

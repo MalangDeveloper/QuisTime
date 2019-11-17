@@ -15,47 +15,39 @@ import com.example.quistime.MainActivity;
 import com.example.quistime.Models.Login;
 import com.example.quistime.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.regex.Pattern;
-
-public class LoginDosenActivity extends AppCompatActivity {
-    public static final String LOGIN = "Login";
+public class SigninActivity extends AppCompatActivity {
     private EditText txtEmail, txtPassword;
-    private Button btnLogin, btnTambah;
+    private Button btnDatar;
     private FirebaseAuth auth;
+    private DatabaseReference database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_dosen);
+        setContentView(R.layout.activity_signin);
 
-        txtEmail = findViewById(R.id.txtEmail);
-        txtPassword = findViewById(R.id.txtPassword);
-        btnLogin = findViewById(R.id.btnLogin);
-        btnTambah = findViewById(R.id.btnTambah);
+        txtEmail = findViewById(R.id.txtSEmail);
+        txtPassword = findViewById(R.id.txtSPass);
+        btnDatar = findViewById(R.id.btnSTambah);
         auth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance().getReference();
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        btnDatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Login();
-            }
-        });
-        btnTambah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginDosenActivity.this,SigninActivity.class);
-                startActivity(intent);
+                Tambah();
             }
         });
     }
 
-    private void Login(){
+    public void Tambah(){
         final String email = txtEmail.getText().toString().trim();
         final String password = txtPassword.getText().toString().trim();
 
@@ -68,21 +60,26 @@ public class LoginDosenActivity extends AppCompatActivity {
         }else if (password.length() < 6){
             txtPassword.setError("Password Minimal 6 Karakter");
         }else {
-            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginDosenActivity.this, new OnCompleteListener<AuthResult>() {
+            auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(SigninActivity.this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
-                        Login l = new Login(email, password);
-
-                        Intent intent = new Intent(LoginDosenActivity.this, MainActivity.class);
-                        intent.putExtra(LOGIN, l);
-                        startActivity(intent);
-                        finish();
-                    }else{
-                        Toast.makeText(LoginDosenActivity.this, "Login Gagal "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        tambahData(new Login(email, password));
+                        startActivity(new Intent(SigninActivity.this,LoginDosenActivity.class));
+                    }else {
+                        Toast.makeText(SigninActivity.this, "Gagal Tambah Login "+ task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
             });
         }
+    }
+
+    private void tambahData(Login login){
+        database.child("Login").push().setValue(login).addOnSuccessListener(SigninActivity.this, new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(SigninActivity.this, "Berhasil Login", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
