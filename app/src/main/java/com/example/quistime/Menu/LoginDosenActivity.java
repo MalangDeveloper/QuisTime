@@ -74,7 +74,7 @@ public class LoginDosenActivity extends AppCompatActivity {
                     if (task.isSuccessful()){
                         Login l = new Login(email, password);
 
-                        Intent intent = new Intent(LoginDosenActivity.this, MainActivity.class);
+                        Intent intent = new Intent(LoginDosenActivity.this, MatkulActivity.class);
                         intent.putExtra(LOGIN, l);
                         startActivity(intent);
                         finish();

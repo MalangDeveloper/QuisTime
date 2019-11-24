@@ -65,7 +65,11 @@ public class SigninActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
                         tambahData(new Login(email, password));
-                        startActivity(new Intent(SigninActivity.this,LoginDosenActivity.class));
+                        Intent intent = new Intent(SigninActivity.this,LoginDosenActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        finish();
                     }else {
                         Toast.makeText(SigninActivity.this, "Gagal Tambah Login "+ task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
@@ -75,7 +79,7 @@ public class SigninActivity extends AppCompatActivity {
     }
 
     private void tambahData(Login login){
-        database.child("Login").push().setValue(login).addOnSuccessListener(SigninActivity.this, new OnSuccessListener<Void>() {
+        database.child("Login").child(login.getPassword()).setValue(login).addOnSuccessListener(SigninActivity.this, new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(SigninActivity.this, "Berhasil Login", Toast.LENGTH_SHORT).show();
