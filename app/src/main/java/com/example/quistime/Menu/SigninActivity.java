@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.quistime.MainActivity;
 import com.example.quistime.Models.Login;
 import com.example.quistime.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,7 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class SigninActivity extends AppCompatActivity {
-    private EditText txtEmail, txtPassword;
+    private EditText txtEmail, txtPassword, txtNama;
     private Button btnDatar;
     private FirebaseAuth auth;
     private DatabaseReference database;
@@ -35,6 +34,7 @@ public class SigninActivity extends AppCompatActivity {
 
         txtEmail = findViewById(R.id.txtSEmail);
         txtPassword = findViewById(R.id.txtSPass);
+        txtNama = findViewById(R.id.txtSNama);
         btnDatar = findViewById(R.id.btnSTambah);
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance().getReference();
@@ -50,6 +50,7 @@ public class SigninActivity extends AppCompatActivity {
     public void Tambah(){
         final String email = txtEmail.getText().toString().trim();
         final String password = txtPassword.getText().toString().trim();
+        final String nama = txtNama.getText().toString().trim();
 
         if (email.isEmpty()){
             txtEmail.setError("Isikan Email");
@@ -64,7 +65,7 @@ public class SigninActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
-                        tambahData(new Login(email, password));
+                        tambahData(new Login(email, password, nama));
                         Intent intent = new Intent(SigninActivity.this,LoginDosenActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -79,7 +80,7 @@ public class SigninActivity extends AppCompatActivity {
     }
 
     private void tambahData(Login login){
-        database.child("Login").child(login.getPassword()).setValue(login).addOnSuccessListener(SigninActivity.this, new OnSuccessListener<Void>() {
+        database.child("Dosen").push().setValue(login).addOnSuccessListener(SigninActivity.this, new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(SigninActivity.this, "Berhasil Login", Toast.LENGTH_SHORT).show();

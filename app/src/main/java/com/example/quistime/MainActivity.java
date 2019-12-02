@@ -6,9 +6,10 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.quistime.Models.Login;
+import com.example.quistime.Models.Matkul;
 import com.google.firebase.auth.FirebaseAuth;
 
-import static com.example.quistime.Menu.LoginDosenActivity.LOGIN;
+import static com.example.quistime.Adapter.MatkulDosenAdapter.MATKUL;
 
 public class MainActivity extends AppCompatActivity {
     TextView txt;
@@ -21,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            Login l = extras.getParcelable(LOGIN);
-            txt.setText(l.getEmail() +" "+ l.getPassword());
+            Matkul m = extras.getParcelable(MATKUL);
+            txt.setText(m.getCode() +" "+ m.getMatkul());
         }
     }
 }

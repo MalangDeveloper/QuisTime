@@ -9,9 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Menu.JawabActivity"></activity>
-        <activity android:name=".Menu.MhsLoginActivity" />
-        <activity android:name=".Menu.TambahMatkulActivity" />
+        <activity android:name=".Menu.TambahMatkulActivity"></activity>
         <activity android:name=".Menu.MatkulActivity" />
         <activity android:name=".Menu.SigninActivity" />
         <activity android:name=".Menu.LoginDosenActivity" />

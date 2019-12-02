@@ -83,7 +83,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btnTambah"
+        android:id="@+id/btnTambahSoal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tambah"

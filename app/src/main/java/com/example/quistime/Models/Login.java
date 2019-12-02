@@ -4,11 +4,17 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Login implements Parcelable {
-    private String email, password;
+    private String email, password, nama;
 
     public Login(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+
+    public Login(String email, String password, String kode) {
+        this.email = email;
+        this.password = password;
+        this.nama = kode;
     }
 
     public Login() {
@@ -17,6 +23,7 @@ public class Login implements Parcelable {
     protected Login(Parcel in) {
         email = in.readString();
         password = in.readString();
+        nama = in.readString();
     }
 
     public static final Creator<Login> CREATOR = new Creator<Login>() {
@@ -47,6 +54,14 @@ public class Login implements Parcelable {
         this.password = password;
     }
 
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -56,5 +71,6 @@ public class Login implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(email);
         parcel.writeString(password);
+        parcel.writeString(nama);
     }
 }
