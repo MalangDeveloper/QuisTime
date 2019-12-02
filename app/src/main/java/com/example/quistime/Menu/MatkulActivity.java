@@ -23,8 +23,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import static com.example.quistime.Menu.LoginDosenActivity.LOGIN;
-
 public class MatkulActivity extends AppCompatActivity {
     private Button buttonTambah;
     private RecyclerView rvMatkul;
@@ -47,20 +45,13 @@ public class MatkulActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MatkulActivity.this,TambahMatkulActivity.class);
-                Bundle extras = getIntent().getExtras();
-                if (extras != null) {
-                    Login l = extras.getParcelable(LOGIN);
-                    l = new Login(l.getEmail(), l.getPassword());
-                    intent.putExtra(LOGIN, l);
-                }
                 startActivity(intent);
             }
         });
 
 
-        Login l = getIntent().getExtras().getParcelable(LOGIN);
         database = FirebaseDatabase.getInstance().getReference();
-        database.child("Login").child(l.getPassword()).child("Matkul").addValueEventListener(new ValueEventListener() {
+        database.child("Matkul").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 daftarMatkul = new ArrayList<>();

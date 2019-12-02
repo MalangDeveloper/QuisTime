@@ -21,7 +21,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import static com.example.quistime.Menu.LoginDosenActivity.LOGIN;
 
 public class TambahMatkulActivity extends AppCompatActivity {
     private EditText txtNama;
@@ -60,28 +59,22 @@ public class TambahMatkulActivity extends AppCompatActivity {
         if (matkul.isEmpty()){
             txtNama.setError("Isikan Mata Kuliah");
         }else if (code.isEmpty()){
-            txtCode.setError("Isikan Code daro Matkul");
+            txtCode.setError("Isikan Code dari Matkul");
         }else{
             tambahMatkul(new Matkul(matkul, code, txtTanggal));
         }
     }
     private void tambahMatkul(Matkul matkul){
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            Login l = extras.getParcelable(LOGIN);
-            database.child("Login").child(l.getPassword()).child("Matkul").child(matkul.getCode()).setValue(matkul).addOnSuccessListener(TambahMatkulActivity.this, new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Toast.makeText(TambahMatkulActivity.this, "Berhasil Tambah Matkul", Toast.LENGTH_SHORT).show();
-                }
-            });
-            Intent intent = new Intent(TambahMatkulActivity.this,MatkulActivity.class);
-            l = new Login(l.getEmail(), l.getPassword());
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.putExtra(LOGIN, l);
-            startActivity(intent);
-            finish();
-        }
+        database.child("Matkul").child(matkul.getCode()).setValue(matkul).addOnSuccessListener(TambahMatkulActivity.this, new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(TambahMatkulActivity.this, "Berhasil Tambah Matkul", Toast.LENGTH_SHORT).show();
+            }
+        });
+        Intent intent = new Intent(TambahMatkulActivity.this,MatkulActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
 }

@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quistime.MainActivity;
+import com.example.quistime.Menu.SoalActivity;
 import com.example.quistime.Models.Matkul;
 import com.example.quistime.R;
 
@@ -51,7 +52,7 @@ public class MatkulDosenAdapter extends RecyclerView.Adapter<MatkulDosenAdapter.
             public void onClick(View view) {
                 Matkul m = new Matkul(nama, code, tanggal);
                 Context context = view.getContext();
-                Intent intent = new Intent(context, MainActivity.class);
+                Intent intent = new Intent(context, SoalActivity.class);
                 intent.putExtra(MATKUL, m);
                 context.startActivity(intent);
             }
