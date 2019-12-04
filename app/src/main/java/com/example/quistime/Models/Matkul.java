@@ -15,6 +15,11 @@ public class Matkul implements Parcelable {
         this.tanggal = tanggal;
     }
 
+    public Matkul(String matkul, String key) {
+        this.matkul = matkul;
+        this.key = key;
+    }
+
     public  Matkul(){
 
     }
@@ -23,6 +28,7 @@ public class Matkul implements Parcelable {
         matkul = in.readString();
         code = in.readString();
         tanggal = in.readString();
+        key = in.readString();
     }
 
     public static final Creator<Matkul> CREATOR = new Creator<Matkul>() {
@@ -79,5 +85,6 @@ public class Matkul implements Parcelable {
         parcel.writeString(matkul);
         parcel.writeString(code);
         parcel.writeString(tanggal);
+        parcel.writeString(key);
     }
 }

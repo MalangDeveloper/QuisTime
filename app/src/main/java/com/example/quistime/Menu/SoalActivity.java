@@ -42,18 +42,24 @@ public class SoalActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         rvSoal.setLayoutManager(layoutManager);
 
+        Bundle extras = getIntent().getExtras();
+        Matkul m = extras.getParcelable(MATKUL);
+
+        final String key = m.getKey();
+        final String matkul = m.getMatkul();
+
         btnTambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Bundle extras = getIntent().getExtras();
-//                    Matkul m = extras.getParcelable(MATKUL);
+                Matkul m = new Matkul(matkul, key);
                 Intent intent = new Intent(SoalActivity.this,TambahSoalActivity.class);
+                intent.putExtra(MATKUL, m);
                 startActivity(intent);
             }
         });
 
         database = FirebaseDatabase.getInstance().getReference();
-        database.child("SoalDosen").addValueEventListener(new ValueEventListener() {
+        database.child("Matkul").child(m.getKey()).child("Soal").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 daftarSoal = new ArrayList<>();

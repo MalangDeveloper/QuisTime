@@ -56,15 +56,14 @@ public class MatkulDosenAdapter extends RecyclerView.Adapter<MatkulDosenAdapter.
         holder.txtCode.setText(matkul.getCode());
         holder.txtTanggal.setText(matkul.getTanggal());
 
-        final String nama = holder.txtNama.getText().toString();
-        final String code = holder.txtCode.getText().toString();
-        final String tanggal = holder.txtTanggal.getText().toString();
-
         final Matkul mk = daftarMatkul.get(position);
+        final String nama = holder.txtNama.getText().toString();
+        final String key = mk.getKey();
+
         holder.txtNama.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Matkul m = new Matkul(nama, code, tanggal);
+                Matkul m = new Matkul(nama, key);
                 Context context = view.getContext();
                 Intent intent = new Intent(context, SoalActivity.class);
                 intent.putExtra(MATKUL, m);
@@ -80,6 +79,7 @@ public class MatkulDosenAdapter extends RecyclerView.Adapter<MatkulDosenAdapter.
         });
 
         holder.btnEdit.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
                 updateMatkul(mk);
@@ -118,12 +118,12 @@ public class MatkulDosenAdapter extends RecyclerView.Adapter<MatkulDosenAdapter.
         builder.setView(view);
 
         final EditText editTextName = view.findViewById(R.id.editmatkul);
-        final EditText editCodeMatkul = view.findViewById(R.id.editCodeMatkul);
+//        final EditText editCodeMatkul = view.findViewById(R.id.editCodeMatkul);
         final Button btnUpdate = view.findViewById(R.id.btneditmatkul);
         final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
         editTextName.setText(matkul.getMatkul());
-        editCodeMatkul.setText(matkul.getCode());
+//        editCodeMatkul.setText(matkul.getCode());
 
         final AlertDialog dialog = builder.create();
         dialog.show();
@@ -132,25 +132,25 @@ public class MatkulDosenAdapter extends RecyclerView.Adapter<MatkulDosenAdapter.
             @Override
             public void onClick(View view) {
                 String name = editTextName.getText().toString().trim();
-                String code = editCodeMatkul.getText().toString().trim();
+//                String code = editCodeMatkul.getText().toString().trim();
 
                 if (name.isEmpty()) {
                     editTextName.setError("Matkul tidak boleh kosong");
                     editTextName.requestFocus();
                     return;
                 }
-                if (code.isEmpty()){
-                    editCodeMatkul.setError("Matkul tidak boleh kosong");
-                    editCodeMatkul.requestFocus();
-                    return;
-                }
+//                if (code.isEmpty()){
+//                    editCodeMatkul.setError("Matkul tidak boleh kosong");
+//                    editCodeMatkul.requestFocus();
+//                    return;
+//                }
 
                 Calendar cal = Calendar.getInstance();
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
                 String txtTanggal = sdf.format(cal.getTime());
 
                 matkul.setMatkul(name);
-                matkul.setCode(code);
+//                matkul.setCode(code);
                 matkul.setTanggal(txtTanggal);
                 database.child("Matkul").child(matkul.getKey()).setValue(matkul).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

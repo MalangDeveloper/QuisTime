@@ -1,6 +1,7 @@
 package com.example.quistime.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ public class SoalDosenAdapter extends RecyclerView.Adapter<SoalDosenAdapter.MyVi
 
     private ArrayList<SoalDosen> daftarSoal;
     private Context context;
+    int No =0;
 
     public SoalDosenAdapter(ArrayList<SoalDosen> daftarSoal, Context context) {
         this.daftarSoal = daftarSoal;
@@ -33,12 +35,16 @@ public class SoalDosenAdapter extends RecyclerView.Adapter<SoalDosenAdapter.MyVi
     @Override
     public void onBindViewHolder(@NonNull SoalDosenAdapter.MyViewHolder holder, int position) {
         SoalDosen soalDosen = daftarSoal.get(position);
+        String urutan = Integer.toString(No+1);
+        holder.txtNo.setText(urutan+". ");
         holder.txtSoal.setText(soalDosen.getSoal());
-        holder.txtA.setText(soalDosen.getA());
-        holder.txtB.setText(soalDosen.getB());
-        holder.txtC.setText(soalDosen.getC());
-        holder.txtD.setText(soalDosen.getD());
-        holder.txtE.setText(soalDosen.getE());
+        holder.txtA.setText("A. "+soalDosen.getA());
+        holder.txtB.setText("B. "+soalDosen.getB());
+        holder.txtC.setText("C. "+soalDosen.getC());
+        holder.txtD.setText("D. "+soalDosen.getD());
+        holder.txtE.setText("E. "+soalDosen.getE());
+        holder.txtKunci.setText(soalDosen.getJawaban());
+        No = No+1;
     }
 
     @Override
@@ -54,6 +60,7 @@ public class SoalDosenAdapter extends RecyclerView.Adapter<SoalDosenAdapter.MyVi
         TextView txtD;
         TextView txtE;
         TextView txtKunci;
+        TextView txtNo;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             txtSoal = itemView.findViewById(R.id.txtSoal);
@@ -63,6 +70,7 @@ public class SoalDosenAdapter extends RecyclerView.Adapter<SoalDosenAdapter.MyVi
             txtD = itemView.findViewById(R.id.txtD);
             txtE = itemView.findViewById(R.id.txtE);
             txtKunci = itemView.findViewById(R.id.txtKunci);
+            txtNo = itemView.findViewById(R.id.txtNo);
         }
     }
 }

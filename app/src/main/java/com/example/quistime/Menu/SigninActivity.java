@@ -52,7 +52,9 @@ public class SigninActivity extends AppCompatActivity {
         final String password = txtPassword.getText().toString().trim();
         final String nama = txtNama.getText().toString().trim();
 
-        if (email.isEmpty()){
+        if(nama.isEmpty()) {
+            txtNama.setError("Masukkan Nama");
+        }else if(email.isEmpty()){
             txtEmail.setError("Isikan Email");
         }else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             txtEmail.setError("Masukkan Email Valid");

@@ -19,14 +19,6 @@
         android:layout_height="wrap_content"
         android:hint="Masukkan Matakuliah" />
 
-    <EditText
-        android:id="@+id/editCodeMatkul"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Masukkan Code Matkul"
-        android:inputType="textPersonName" />
-
     <Button
         android:id="@+id/btneditmatkul"
         android:layout_width="match_parent"
