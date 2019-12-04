@@ -63,7 +63,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
@@ -79,5 +79,11 @@
             android:layout_weight="1"
             android:entries="@array/Soal" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnTambah"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tambah Soal" />
 
 </LinearLayout>
