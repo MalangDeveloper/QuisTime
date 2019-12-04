@@ -13,6 +13,8 @@
         <activity android:name=".Menu.MatkulActivity" />
         <activity android:name=".Menu.SigninActivity" />
         <activity android:name=".Menu.LoginDosenActivity" />
+        <activity android:name=".Menu.SoalActivity" />
+        <activity android:name=".Menu.TambahSoalActivity" />
         <activity android:name=".Menu.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
