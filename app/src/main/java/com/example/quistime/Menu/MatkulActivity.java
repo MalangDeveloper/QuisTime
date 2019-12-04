@@ -5,16 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.quistime.Adapter.MatkulDosenAdapter;
 import com.example.quistime.Models.Login;
 import com.example.quistime.Models.Matkul;
 import com.example.quistime.R;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -70,5 +75,31 @@ public class MatkulActivity extends AppCompatActivity {
                 System.out.println(databaseError.getDetails()+" "+databaseError.getMessage());
             }
         });
+    }
+
+    public void onDeleteData(final Matkul matkul, final int position) {
+        if(database!=null){
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle("Konfirmasi Hapus");
+            alert.setMessage("Apakah ingin Menghapus Data?");
+            alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    database.child("Matkul").child(matkul.getKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(MatkulActivity.this,"success delete", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+            });
+            alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.cancel();
+                }
+            });
+            alert.create().show();
+        }
     }
 }
