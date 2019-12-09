@@ -9,27 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Menu.TambahMatkulActivity"></activity>
+        <activity android:name=".Menu.TokenActivity"></activity>
         <activity android:name=".Menu.MatkulActivity" />
         <activity android:name=".Menu.SigninActivity" />
         <activity android:name=".Menu.LoginDosenActivity" />
         <activity android:name=".Menu.SoalActivity" />
         <activity android:name=".Menu.TambahSoalActivity" />
-        <activity android:name=".Menu.HomeActivity">
+        <activity android:name=".Menu.HomeActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".MainActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
         </activity>
     </application>
 

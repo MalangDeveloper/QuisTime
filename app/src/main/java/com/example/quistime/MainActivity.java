@@ -2,9 +2,12 @@ package com.example.quistime;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.TextView;
 
+import com.example.quistime.Menu.HomeActivity;
 import com.example.quistime.Models.Login;
 import com.example.quistime.Models.Matkul;
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,12 +21,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        txt = findViewById(R.id.textView);
-
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            Matkul m = extras.getParcelable(MATKUL);
-            txt.setText(m.getCode() +" "+ m.getMatkul());
-        }
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                finish();
+            }
+        },1000);
     }
 }
