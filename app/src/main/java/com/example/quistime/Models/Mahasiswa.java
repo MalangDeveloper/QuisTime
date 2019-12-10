@@ -1,7 +1,29 @@
 package com.example.quistime.Models;
 
-public class Mahasiswa {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Mahasiswa implements Parcelable {
     private String nama,kelas,nim, token;
+
+    protected Mahasiswa(Parcel in) {
+        nama = in.readString();
+        kelas = in.readString();
+        nim = in.readString();
+        token = in.readString();
+    }
+
+    public static final Creator<Mahasiswa> CREATOR = new Creator<Mahasiswa>() {
+        @Override
+        public Mahasiswa createFromParcel(Parcel in) {
+            return new Mahasiswa(in);
+        }
+
+        @Override
+        public Mahasiswa[] newArray(int size) {
+            return new Mahasiswa[size];
+        }
+    };
 
     public String getNama() {
         return nama;
@@ -50,5 +72,18 @@ public class Mahasiswa {
 
     public Mahasiswa(){
 
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(nama);
+        parcel.writeString(kelas);
+        parcel.writeString(nim);
+        parcel.writeString(token);
     }
 }

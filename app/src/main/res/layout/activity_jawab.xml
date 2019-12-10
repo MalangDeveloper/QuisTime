@@ -9,12 +9,13 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="421dp"
-        android:layout_height="575dp"
-        android:layout_marginStart="16dp"
+        android:id="@+id/rvJawab"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/textView5"

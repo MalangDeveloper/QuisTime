@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MhsLoginActivity extends AppCompatActivity {
     public static final String MHS = "Mahasiswa";
@@ -37,6 +38,7 @@ public class MhsLoginActivity extends AppCompatActivity {
         txtNIM = findViewById(R.id.txtNIM);
         txtKelas = findViewById(R.id.txtKelas);
         btnLogin = findViewById(R.id.btnLogin);
+        database = FirebaseDatabase.getInstance().getReference();
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,13 +58,19 @@ public class MhsLoginActivity extends AppCompatActivity {
             txtKelas.setError("Isikan Kelas");
         }else if (nim.isEmpty()){
             txtNIM.setError("Isikan NIM");
-        }else if (nim.length() == 10){
+        }else if (nim.length() == 9){
             txtNIM.setError("NIM terdiri dari 10 Karakter");
         }else {
-            Mahasiswa mhs = new Mahasiswa(nama,nim,kelas);
-            Intent intent = new Intent(MhsLoginActivity.this,TokenActivity.class);
-            intent.putExtra(MHS, (Parcelable) mhs);
-            startActivity(intent);
+            final Mahasiswa mhs = new Mahasiswa(nama,kelas,nim);
+            database.child("Mahasiswa").child(nim).setValue(mhs).addOnSuccessListener(MhsLoginActivity.this, new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Intent intent = new Intent(MhsLoginActivity.this,TokenActivity.class);
+                    intent.putExtra(MHS, mhs);
+                    startActivity(intent);
+                    finish();
+                }
+            });
         }
     }
 }

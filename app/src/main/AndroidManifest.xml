@@ -11,11 +11,14 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Menu.TokenActivity"></activity>
         <activity android:name=".Menu.MatkulActivity" />
+        <activity android:name=".Menu.TambahMatkulActivity" />
         <activity android:name=".Menu.SigninActivity" />
         <activity android:name=".Menu.LoginDosenActivity" />
         <activity android:name=".Menu.SoalActivity" />
         <activity android:name=".Menu.TambahSoalActivity" />
         <activity android:name=".Menu.HomeActivity" />
+        <activity android:name=".Menu.JawabActivity" />
+        <activity android:name=".Menu.MhsLoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
