@@ -7,12 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.TextView;
 
-import com.example.quistime.Menu.HomeActivity;
-import com.example.quistime.Models.Login;
-import com.example.quistime.Models.Matkul;
-import com.google.firebase.auth.FirebaseAuth;
-
-import static com.example.quistime.Adapter.MatkulDosenAdapter.MATKUL;
+import com.example.quistime.Menu.ViewPager;
 
 public class MainActivity extends AppCompatActivity {
     TextView txt;
@@ -24,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                startActivity(new Intent(MainActivity.this, ViewPager.class));
                 finish();
             }
         },1000);

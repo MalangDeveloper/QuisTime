@@ -1,6 +1,8 @@
 package com.example.quistime.Adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Build;
@@ -8,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -17,10 +20,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.quistime.Menu.HomeActivity;
 import com.example.quistime.Menu.JawabActivity;
 import com.example.quistime.Models.Nilai;
 import com.example.quistime.Models.SoalDosen;
 import com.example.quistime.R;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -69,7 +76,7 @@ public class JawabMhsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         if (holder instanceof HeaderViewHolder) {
             HeaderViewHolder headerHolder = (HeaderViewHolder) holder;
         } else if (holder instanceof FooterViewHolder) {
-            FooterViewHolder footerHolder = (FooterViewHolder) holder;
+            final FooterViewHolder footerHolder = (FooterViewHolder) holder;
             footerHolder.btnFooter.setOnClickListener(new View.OnClickListener() {
                 @RequiresApi(api = Build.VERSION_CODES.N)
                 @Override
@@ -80,7 +87,35 @@ public class JawabMhsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     float hasil = (getNilai()*100)/(daftarSoal.size()-1);
                     String score = Float.toString(hasil);
                     Nilai n = new Nilai(score, txtTanggal);
+                    footerHolder.btnFooter.setEnabled(false);
                     listener.onSaveData(n);
+
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    LayoutInflater inflater = LayoutInflater.from(context);
+                    View v = inflater.inflate(R.layout.dialog_hasil_nilai, null);
+                    builder.setView(v);
+
+                    final TextView txtNilaiHasil = v.findViewById(R.id.txtNilaiHasil);
+                    final TextView txtTanggalHasil = v.findViewById(R.id.txtTanggalHasil);
+                    final Button btnOke = v.findViewById(R.id.btnOke);
+
+                    txtNilaiHasil.setText("Nilai: "+score);
+                    txtTanggalHasil.setText(txtTanggal);
+
+                    final AlertDialog dialog = builder.create();
+                    dialog.show();
+
+                    btnOke.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(context, HomeActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            context.startActivity(intent);
+                            dialog.dismiss();
+                        }
+                    });
                 }
             });
         } else if (holder instanceof ItemViewHolder) {

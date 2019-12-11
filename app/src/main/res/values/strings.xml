@@ -7,6 +7,12 @@
     <string name="enter_kelas">Enter Your Class</string>
     <string name="enter_token">Masukkan Token Anda</string>
     <string name="enter_nama">Enter your Name</string>
+    <string name="buat">Membuat Soal Quis Dengan Mudah</string>
+    <string name="mwnjawab">Menjawab Soal Dengan Mudah Menggunakan Aplikasi QuisTime</string>
+    <string name="nilai">cek nilai yang kamu dapatkan</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="start">Mulai</string>
 
     <array name="Soal">
         <item>A</item>
@@ -15,4 +21,6 @@
         <item>D</item>
         <item>E</item>
     </array>
+
+
 </resources>

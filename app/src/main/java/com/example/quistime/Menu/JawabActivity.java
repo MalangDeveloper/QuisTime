@@ -83,9 +83,7 @@ public class JawabActivity extends AppCompatActivity {
         database.child("Nilai").child(NIM).push().setValue(n).addOnSuccessListener(JawabActivity.this, new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Intent intent = new Intent(JawabActivity.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
+                Toast.makeText(JawabActivity.this, "Nilai Berhasil Disimpan", Toast.LENGTH_SHORT).show();
             }
         });
     }

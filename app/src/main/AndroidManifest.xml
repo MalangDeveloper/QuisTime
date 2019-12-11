@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Menu.TokenActivity"></activity>
+        <activity android:name=".Menu.ViewPager" />
+        <activity android:name=".Menu.TokenActivity" />
         <activity android:name=".Menu.MatkulActivity" />
         <activity android:name=".Menu.TambahMatkulActivity" />
         <activity android:name=".Menu.SigninActivity" />
