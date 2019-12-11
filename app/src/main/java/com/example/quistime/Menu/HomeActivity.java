@@ -29,4 +29,9 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this,LoginDosenActivity.class);
         startActivity(intent);
     }
+
+    public void clickListNilai(View view) {
+        Intent intent = new Intent(this,ListNilaiActivity.class);
+        startActivity(intent);
+    }
 }
