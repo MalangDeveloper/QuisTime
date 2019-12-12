@@ -8,40 +8,52 @@
     android:orientation="vertical"
     tools:context=".Menu.HomeActivity">
 
-    <Button
-        android:id="@+id/btnMhs"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mahasiswa"
-        android:textColor="@color/colorBlue"
-        android:textSize="24sp" />
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnDsn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:onClick="clickDosen"
-        android:text="Dosen"
-        android:textColor="@color/colorBlue"
-        android:textSize="24sp" />
+        <Button
+            android:id="@+id/btnMhs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/roundedbutton"
+            android:text="Mahasiswa"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="LIST NILAI"
-        android:textColor="@color/colorBlue"
-        android:textSize="24sp"
-        android:onClick="clickListNilai"
-        android:textStyle="bold" />
+        <Button
+            android:id="@+id/btnDsn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/roundedbutton"
+            android:onClick="clickDosen"
+            android:text="Dosen"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="166dp"
-        android:layout_height="527dp"
-        android:layout_gravity="end"
-        android:layout_marginEnd="16dp"
-        app:srcCompat="@drawable/icon" />
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/roundedbutton"
+            android:onClick="clickListNilai"
+            android:text="LIST NILAI"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="166dp"
+            android:layout_height="527dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="16dp"
+            app:srcCompat="@drawable/icon" />
+    </LinearLayout>
 
 </LinearLayout>
