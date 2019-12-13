@@ -14,13 +14,24 @@
         android:layout_height="match_parent"
         android:layout_margin="20dp"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:text="SIGN IN"
+            android:textStyle="bold"
+            android:layout_marginTop="40dp"
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
         <EditText
             android:id="@+id/txtSNama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Nama"
-            android:layout_marginTop="40dp"
+
             android:inputType="textPersonName" />
 
         <EditText
@@ -44,6 +55,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Tambah" />
+            android:textStyle="bold"
+            android:background="@drawable/roundedbutton"
+            android:text="Sign In" />
     </LinearLayout>
 </LinearLayout>

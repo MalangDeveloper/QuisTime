@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content" android:background="@drawable/background">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/cardsoal"
+    android:layout_margin="10dp"
+    android:padding="10dp"
+    android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/liniearNo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/txtNo"
@@ -27,40 +34,47 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="20dp"
-        android:text="TextView" />
+        android:text="TextView"
+        app:layout_constraintTop_toBottomOf="@id/liniearNo" />
 
     <TextView
         android:id="@+id/txtB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="20dp"
-        android:text="TextView" />
+        android:text="TextView"
+        app:layout_constraintTop_toBottomOf="@id/txtA" />
 
     <TextView
         android:id="@+id/txtC"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="20dp"
-        android:text="TextView" />
+        android:text="TextView"
+        app:layout_constraintTop_toBottomOf="@id/txtB" />
 
     <TextView
         android:id="@+id/txtD"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="20dp"
-        android:text="TextView" />
+        android:text="TextView"
+        app:layout_constraintTop_toBottomOf="@id/txtC" />
 
     <TextView
         android:id="@+id/txtE"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="20dp"
-        android:text="TextView" />
+        android:text="TextView"
+        app:layout_constraintTop_toBottomOf="@id/txtD" />
 
     <LinearLayout
+        android:id="@+id/LinearKunci"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/txtE">
 
         <TextView
             android:id="@+id/textView14"
@@ -74,22 +88,34 @@
             android:layout_height="wrap_content"
             android:text="TextView" />
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/linearBtn"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/LinearKunci">
+
         <Button
             android:id="@+id/btnHapus"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
+            android:textStyle="bold"
+            android:layout_margin="5dp"
+            android:background="@drawable/roundedbutton"
+            android:backgroundTint="@color/red"
             android:text="Hapus" />
 
         <Button
             android:id="@+id/btnEdit"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/roundedbutton"
+            android:backgroundTint="@color/rdgreen"
             android:text="EDIT" />
     </LinearLayout>
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

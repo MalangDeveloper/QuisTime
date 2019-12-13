@@ -9,19 +9,31 @@
     android:background="@drawable/background"
     tools:context=".Menu.TambahSoalActivity" >
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_margin="20dp">
+
+        <Button
+            android:id="@+id/btnTambah"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundedbutton"
+            android:text="Tambah Soal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lineartamabah"
+            app:layout_constraintVertical_bias="0.17000002" />
+
         <EditText
             android:id="@+id/txtTSoal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Masukkan Soal"
-            android:layout_marginTop="40dp"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/txtTA"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/txtTA"
@@ -30,18 +42,20 @@
             android:ems="10"
             android:hint="Masukkan Jawaban A"
             android:inputType="textPersonName"
-            android:layout_marginTop="20dp"
-            android:paddingLeft="20dp" />
+            android:paddingTop="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/txtTB"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/txtTB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:ems="10"
             android:hint="Masukkan Jawaban B"
             android:inputType="textPersonName"
-            android:layout_marginTop="20dp"
-            android:paddingLeft="20dp" />
+            app:layout_constraintBottom_toTopOf="@+id/txtTC"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/txtTC"
@@ -50,34 +64,41 @@
             android:ems="10"
             android:hint="Masukkan Jawaban C"
             android:inputType="textPersonName"
-            android:layout_marginTop="20dp"
-            android:paddingLeft="20dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.39" />
 
         <EditText
             android:id="@+id/txtTD"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:ems="10"
             android:hint="Masukkan Jawaban D"
             android:inputType="textPersonName"
-            android:layout_marginTop="20dp"
-            android:paddingLeft="20dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtTC" />
 
         <EditText
             android:id="@+id/txtTE"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:ems="10"
             android:hint="Masukkan Jawaban E"
             android:inputType="textPersonName"
-            android:layout_marginTop="20dp"
-            android:paddingLeft="20dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtTD" />
 
         <LinearLayout
+            android:id="@+id/lineartamabah"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtTE">
 
             <TextView
                 android:id="@+id/textView5"
@@ -93,13 +114,6 @@
                 android:entries="@array/Soal" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btnTambah"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tambah Soal"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/roundedbutton"/>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

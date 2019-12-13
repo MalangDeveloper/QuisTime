@@ -18,6 +18,8 @@
     <color name="dot_light_screen3">#2C03105A</color>
     <color name="bgdialog">#3DE1D1</color>
     <color name="green">#510FC715</color>
+    <color name="red">#FF0017</color>
+    <color name="rdgreen">#0099FF</color>
 
     <array name="array_dot_active">
         <item>@color/dot_light_screen1</item>

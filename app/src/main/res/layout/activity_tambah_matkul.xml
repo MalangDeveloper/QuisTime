@@ -23,7 +23,7 @@
 
         <EditText
             android:id="@+id/txtNama"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:layout_marginTop="20dp"
@@ -39,7 +39,7 @@
 
         <EditText
             android:id="@+id/txtCode"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:ems="10"

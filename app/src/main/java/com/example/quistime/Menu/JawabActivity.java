@@ -39,12 +39,14 @@ public class JawabActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private DatabaseReference database;
     String token, nama, NIM, kelas;
+    TextView timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jawab);
 
+        timer = findViewById(R.id.txtTime);
         rvJawab= findViewById(R.id.rvJawab);
         layoutManager = new LinearLayoutManager(this);
         rvJawab.setLayoutManager(layoutManager);
@@ -55,6 +57,8 @@ public class JawabActivity extends AppCompatActivity {
         NIM = mhs.getNim();
         kelas = mhs.getKelas();
         token = mhs.getToken();
+
+//        reverseTimer(10);
 
         database = FirebaseDatabase.getInstance().getReference();
         database.child("Matkul").child(token).child("Soal").addValueEventListener(new ValueEventListener() {
@@ -86,5 +90,44 @@ public class JawabActivity extends AppCompatActivity {
                 Toast.makeText(JawabActivity.this, "Nilai Berhasil Disimpan", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Kembali ke Menu Awal ?");
+        alert.setIcon(R.drawable.quistimepng);
+        alert.setMessage("Semua jawaban yang diisi tidak akan disimpan sebelim menyelesaikan Quis ini");
+        alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent(JawabActivity.this, HomeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        alert.create().show();
+    }
+
+    public void reverseTimer(int Seconds){
+        new CountDownTimer(Seconds* 1000+1000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                int seconds = (int) (millisUntilFinished / 1000);
+                int minutes = seconds / 60;
+                seconds = seconds % 60;
+                timer.setText(String.format("%02d", minutes) + ":" + String.format("%02d", seconds));
+            }
+            public void onFinish() {
+                timer.setText("Done");
+            }
+        }.start();
     }
 }

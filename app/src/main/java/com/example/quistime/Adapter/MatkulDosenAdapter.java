@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quistime.Menu.MatkulActivity;
@@ -60,7 +61,7 @@ public class MatkulDosenAdapter extends RecyclerView.Adapter<MatkulDosenAdapter.
         final String nama = holder.txtNama.getText().toString();
         final String key = mk.getKey();
 
-        holder.txtNama.setOnClickListener(new View.OnClickListener() {
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Matkul m = new Matkul(nama, key);
@@ -98,6 +99,7 @@ public class MatkulDosenAdapter extends RecyclerView.Adapter<MatkulDosenAdapter.
         TextView txtTanggal;
         TextView btnEdit;
         TextView btnHapus;
+        ConstraintLayout linearLayout;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             txtNama = itemView.findViewById(R.id.txtNama);
@@ -105,6 +107,7 @@ public class MatkulDosenAdapter extends RecyclerView.Adapter<MatkulDosenAdapter.
             txtTanggal = itemView.findViewById(R.id.txtTanggal);
             btnEdit = itemView.findViewById(R.id.btneditmatkul);
             btnHapus = itemView.findViewById(R.id.btnhapusmatkul);
+            linearLayout = itemView.findViewById(R.id.linearLayout);
         }
     }
 

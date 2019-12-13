@@ -9,38 +9,45 @@
     tools:context=".Menu.TokenActivity">
 
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_margin="20dp">
+
         <TextView
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginBottom="50dp"
             android:text="Masukkan Token"
             android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/txtToken"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/txtToken"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="52dp"
             android:ems="10"
+            android:gravity="center"
             android:hint="@string/enter_token"
             android:inputType="textPersonName"
-            android:layout_marginTop="20dp"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/btnMasuk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="304dp"
-            android:layout_marginTop="20dp"
-            android:text="Masuk"
-            android:textSize="24sp" />
-    </LinearLayout>
+            android:layout_marginTop="40dp"
+            android:text="Mulai"
+            android:textSize="24sp"
+            android:background="@drawable/roundedbutton"
+            app:layout_constraintTop_toBottomOf="@+id/txtToken" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
