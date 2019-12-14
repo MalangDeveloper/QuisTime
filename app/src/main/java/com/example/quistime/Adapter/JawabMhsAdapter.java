@@ -96,7 +96,7 @@ public class JawabMhsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     AlertDialog.Builder alert = new AlertDialog.Builder(context);
                     alert.setTitle("Simpan");
                     alert.setIcon(R.drawable.quistimepng);
-                    alert.setMessage("Ingin menyelasaikan Quis ini sekarang ? \nTotal Ada "+getTotal()+" yang sudah dijawab");
+                    alert.setMessage("Ingin menyelasaikan Quis ini sekarang ? \nTotal ada "+getTotal()+" dari "+(daftarSoal.size()-1)+" soal yang sudah dijawab");
                     alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -132,9 +132,9 @@ public class JawabMhsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             @Override
             public void onClick(View view) {
                 if (itemViewHolder.rButton.getCheckedRadioButtonId()== -1){
-                    setTotal(1);
                     Toast.makeText(context, "Pilih Jawaban Sebelum Disimpan", Toast.LENGTH_SHORT).show();
                 }else {
+                    setTotal(1);
                     itemViewHolder.btnSimpan.setText("Tersimpan");
                     itemViewHolder.btnSimpan.setEnabled(false);
                     itemViewHolder.rButtonA.setEnabled(false);

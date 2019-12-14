@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,7 +63,7 @@ public class SoalDosenAdapter extends RecyclerView.Adapter<SoalDosenAdapter.MyVi
         holder.txtC.setText("C. "+soalDosen.getC());
         holder.txtD.setText("D. "+soalDosen.getD());
         holder.txtE.setText("E. "+soalDosen.getE());
-        holder.txtKunci.setText(soalDosen.getJawaban());
+        holder.txtKunci.setText(" "+soalDosen.getJawaban());
         No = No+1;
         final SoalDosen sd = daftarSoal.get(position);
         holder.btnHapus.setOnClickListener(new View.OnClickListener() {
@@ -125,9 +126,20 @@ public class SoalDosenAdapter extends RecyclerView.Adapter<SoalDosenAdapter.MyVi
         final EditText editTC = view.findViewById(R.id.txtTC);
         final EditText editTD = view.findViewById(R.id.txtTD);
         final EditText editTE = view.findViewById(R.id.txtTE);
+        final Spinner txtkunci = view.findViewById(R.id.spinnerKunci);
+        final TextView headerTambah = view.findViewById(R.id.headertambah);
+        final Button btnTambah = view.findViewById(R.id.btnTambah);
         final Button btnUpdate = view.findViewById(R.id.btnTambah);
-        final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+
         editSoal.setText(soal.getSoal());
+        editTA.setText(soal.getA());
+        editTB.setText(soal.getB());
+        editTC.setText(soal.getC());
+        editTD.setText(soal.getD());
+        editTE.setText(soal.getE());
+        headerTambah.setText("Edit Soal");
+        btnTambah.setText("Update");
+
         final AlertDialog dialog = builder.create();
         dialog.show();
 
@@ -140,6 +152,7 @@ public class SoalDosenAdapter extends RecyclerView.Adapter<SoalDosenAdapter.MyVi
                 soal.setC(editTC.getText().toString().trim());
                 soal.setD(editTD.getText().toString().trim());
                 soal.setE(editTE.getText().toString().trim());
+                soal.setJawaban(txtkunci.getSelectedItem().toString().trim());
 
                 listener.onUpdateData(soal, context);
                 dialog.dismiss();

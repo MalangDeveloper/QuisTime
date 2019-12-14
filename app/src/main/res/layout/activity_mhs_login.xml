@@ -42,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:hint="Enter Your NIM"
+            android:maxLength="10"
             android:inputType="phone"
             app:layout_constraintBottom_toTopOf="@+id/new_password"
             app:layout_constraintStart_toStartOf="parent" />
