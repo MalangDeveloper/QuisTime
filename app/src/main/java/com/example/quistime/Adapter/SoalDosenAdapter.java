@@ -34,7 +34,6 @@ public class SoalDosenAdapter extends RecyclerView.Adapter<SoalDosenAdapter.MyVi
 
     private ArrayList<SoalDosen> daftarSoal;
     private Context context;
-    int No =0;
     SoalActivity listener;
 
 
@@ -55,7 +54,7 @@ public class SoalDosenAdapter extends RecyclerView.Adapter<SoalDosenAdapter.MyVi
     @Override
     public void onBindViewHolder(@NonNull SoalDosenAdapter.MyViewHolder holder, final int position) {
         SoalDosen soalDosen = daftarSoal.get(position);
-        String urutan = Integer.toString(No+1);
+        String urutan = Integer.toString(position+1);
         holder.txtNo.setText(urutan+". ");
         holder.txtSoal.setText(soalDosen.getSoal());
         holder.txtA.setText("A. "+soalDosen.getA());
@@ -64,7 +63,6 @@ public class SoalDosenAdapter extends RecyclerView.Adapter<SoalDosenAdapter.MyVi
         holder.txtD.setText("D. "+soalDosen.getD());
         holder.txtE.setText("E. "+soalDosen.getE());
         holder.txtKunci.setText(" "+soalDosen.getJawaban());
-        No = No+1;
         final SoalDosen sd = daftarSoal.get(position);
         holder.btnHapus.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -58,7 +58,7 @@ public class JawabActivity extends AppCompatActivity {
         kelas = mhs.getKelas();
         token = mhs.getToken();
 
-//        reverseTimer(10);
+        reverseTimer(2700);
 
         database = FirebaseDatabase.getInstance().getReference();
         database.child("Matkul").child(token).child("Soal").addValueEventListener(new ValueEventListener() {

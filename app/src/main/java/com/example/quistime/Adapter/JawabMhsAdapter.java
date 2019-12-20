@@ -41,7 +41,6 @@ public class JawabMhsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private ArrayList<SoalDosen> daftarSoal;
     private Context context;
     JawabActivity listener;
-    int No =0;
     int nilai, total;
 
     public int getNilai() {
@@ -69,6 +68,7 @@ public class JawabMhsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        reverseTimer(2700);
         if (viewType == TYPE_ITEM) {
             View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.jawabsoal, parent, false);
             return new ItemViewHolder(itemView);
@@ -83,8 +83,6 @@ public class JawabMhsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
-        reverseTimer(2700);
-        listener.reverseTimer(2700);
         if (holder instanceof HeaderViewHolder) {
             HeaderViewHolder headerHolder = (HeaderViewHolder) holder;
         } else if (holder instanceof FooterViewHolder) {
@@ -116,7 +114,7 @@ public class JawabMhsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         } else if (holder instanceof ItemViewHolder) {
             final ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
             SoalDosen soalDosen = daftarSoal.get(position);
-            String urutan = Integer.toString(No+1);
+            String urutan = Integer.toString(position);
             itemViewHolder.txtNosoal.setText(urutan+". ");
             itemViewHolder.txtSoalMhs.setText(soalDosen.getSoal());
             itemViewHolder.rButtonA.setText("A. "+soalDosen.getA());
@@ -150,7 +148,6 @@ public class JawabMhsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 }
             }
         });
-        No = No+1;
         }
     }
 
