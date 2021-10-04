@@ -81,14 +81,14 @@ public class MatkulActivity extends AppCompatActivity {
         if(database!=null){
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
             alert.setTitle("Konfirmasi Hapus");
-            alert.setMessage("Apakah ingin Menghapus Data?");
+            alert.setMessage("Apakah anda ingin menghapus data ini?");
             alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     database.child("Matkul").child(matkul.getKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Toast.makeText(MatkulActivity.this,"success delete", Toast.LENGTH_LONG).show();
+                            Toast.makeText(MatkulActivity.this,"data berhasil dihapus", Toast.LENGTH_LONG).show();
                         }
                     });
                 }
@@ -106,7 +106,7 @@ public class MatkulActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setTitle("Kembali ke Menu Awal ?");
+        alert.setTitle("Kembali ke dasboard?");
         alert.setIcon(R.drawable.quistimepng);
         alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
